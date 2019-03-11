@@ -18,8 +18,8 @@ jobs:
       script: yarn semantic-release
     - stage: deploy
       if: type = push
-      install: true
-      script: cat package.json
+      install: git checkout master
+      script: true
       deploy:
         provider: heroku
         api_key:
