@@ -19,7 +19,7 @@ jobs:
     - stage: deploy
       if: type = push
       install: true
-      script: true
+      script: cat package.json
       deploy:
         provider: heroku
         api_key:
