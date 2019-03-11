@@ -2,7 +2,7 @@ branches:
   only: master
 language: node_js
 node_js: lts/*
-cache: yarn
+cache: false
 jobs:
   include:
     - stage: test
