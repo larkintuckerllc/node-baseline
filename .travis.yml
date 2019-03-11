@@ -11,12 +11,15 @@ jobs:
       script:
         - yarn build
         - yarn test:ci
-    - stage: deploy
+    - stage: release
       if: type = push
       before_install: nvm use 10.15.3
       install: yarn install
+      script: yarn semantic-release
+    - stage: deploy
+      if: type = push
+      install: true
       script: true
-      before_deploy: yarn semantic-release
       deploy:
         provider: heroku
         api_key:
