@@ -1,5 +1,12 @@
 language: node_js
 node_js: lts/*
-before_install: nvm use 10.15.3
-install: true
-script: echo "script"
+jobs:
+  include:
+    - stage: test
+      before_install: nvm use 10.15.3
+      install: true
+      script: node --version
+    - stage: deploy
+      install: true
+      script: true
+      deploy: node --version
