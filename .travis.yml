@@ -18,7 +18,7 @@ jobs:
       script: yarn semantic-release
     - stage: deploy
       if: type = push
-      install: git checkout master
+      install: git checkout master && git pull origin master
       script: true
       deploy:
         provider: heroku
