@@ -1,4 +1,5 @@
-if: branch = master
+branches:
+  only: master
 language: node_js
 node_js: lts/*
 cache: yarn
@@ -14,6 +15,7 @@ jobs:
       if: type = push
       install: true
       script: true
+      before_deploy: yarn semantic-release
       deploy:
         provider: heroku
         api_key:
