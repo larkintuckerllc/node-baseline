@@ -12,6 +12,8 @@ jobs:
         - yarn test:ci
     - stage: deploy
       if: type = push
+      install: true
+      script: true
       deploy:
         provider: heroku
         api_key:
