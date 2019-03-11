@@ -29,6 +29,6 @@ app.use(
 );
 app.use(bodyParser.json());
 
-app.use('/', (_, res) => res.status(200).send('app is running 5!'));
+app.use('/', (_, res) => res.status(200).send('app is running 6!'));
 
 export default app;
