@@ -1,12 +1,14 @@
+if: branch = master
 language: node_js
 node_js: lts/*
+cache: yarn
 jobs:
   include:
     - stage: test
       before_install: nvm use 10.15.3
-      install: true
-      script: node --version
+      install: yarn install
+      script:
+        - yarn build
+        - yarn test:ci
     - stage: deploy
-      install: true
       script: true
-      deploy: node --version
