@@ -2,8 +2,16 @@ if: branch = master
 language: node_js
 node_js: lts/*
 cache: yarn
-before_install: nvm use 10.15.3
-install: yarn install
-script:
-  - yarn build
-  - yarn test:ci
+jobs:
+  include: test
+    before_install: nvm use 10.15.3
+    install: yarn install
+    script:
+      - yarn build
+      - yarn test:ci
+  include: deploy
+    if: type = push
+    deploy:
+      provider: heroku
+      api_key:
+        secure: "sp1WSVry9TUMX+VAOz7uG/Aa5WoTqNkBXiIK/GCSGAH0yflRGn7lapvEE4DSFhl5bG2uxJT8NK5KOH+z6Im9U20gpqANWdWOeFW0WF5KhWsgc5RArDWNPAjIOY2z086nPb8wRlHLbaCsB2x7HwGa4Ea87PumJ4aSvqGJxoTy2bILBMgGZUof4h6/DnxWhFjWZosbrDQFIpclW+e+ZT0eNhicbx73pB4/UKKgZW4keT1HY8N9H/+5FwGEO0uNf4bE6EjwkDjsJc27ecMZ43wDVXuzIvRRw5DlTkxtWDsGgEblX1g+94w41sdqdT96r6US+svhKF8bYd5Lh7LFQRRMMuBVa2/1UOYm9wjWbD8/rAyn3ykSNmtfWloIY9uGbNI4PODoAjrXQBzDM017QpgjKK7YPYbxmKK2+SOP1ow+0FdUDZiXZuz08+xHhkrc2vjfHsf0SZNS0o4kym3ogoEmRuTmGLMf7PekImow6q8s9fTGa+yfdWdJS8+6igEPvF5Z/td5b1TyHHOqPOMskuqi3wlJhJRVHqBtGsW35BpbP95/OGu2QveXgoWzsue4q1gx+Ta/QyHu8GdmhjX/xYAJKebwcEE/p3GsYvX/8nkAvQdvFFyb+KMxsIECOVm7p3zXzgCJXKT0Qkyw+noEj1D5YW7oy4WnhCRJwnsNfy1K1UY="
